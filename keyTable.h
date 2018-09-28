@@ -9,6 +9,18 @@ typedef struct {
 
 dict keyTable[] = {
 	{ "RESERVED", KEY_RESERVED },
+	{ "JOYA", BTN_BASE },
+	{ "JOYB", BTN_BASE2 },
+	{ "JOYX", BTN_BASE3 },
+	{ "JOYY", BTN_BASE4 },
+    { "JOYTL", BTN_TL },
+    { "JOYTR", BTN_TR },
+    { "JOYNORTH", BTN_X },
+    { "JOYEAST", BTN_B },
+    { "JOYSOUTH", BTN_A },
+    { "JOYWEST", BTN_Y },
+	{ "JOYSTART", BTN_START },
+	{ "JOYSELECT", BTN_SELECT },
 	{ "ESC", KEY_ESC },
 	{ "1", KEY_1 },
 	{ "2", KEY_2 },

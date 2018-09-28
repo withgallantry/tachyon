@@ -1,7 +1,7 @@
-Adafruit-Retrogame
+Adafruit-Retrogame | Modded for Gamepad
 ==================
 
-Raspberry Pi GPIO-to-virtual-keyboard utility for classic game emulators.
+Everything you love about the existing Adafruit Retrograme but modified to allow gamepads
 
 How-to: https://learn.adafruit.com/retro-gaming-with-raspberry-pi
 
