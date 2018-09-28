@@ -670,11 +670,11 @@ static void pinConfigLoad() {
 		}
 		struct uinput_user_dev uidev;
 		memset(&uidev, 0, sizeof(uidev));
-		snprintf(uidev.name, UINPUT_MAX_NAME_SIZE, "retrogame");
+		snprintf(uidev.name, UINPUT_MAX_NAME_SIZE, "retrogamepad");
 		uidev.id.bustype = BUS_USB;
-		uidev.id.vendor  = 0x1;
-		uidev.id.product = 0x1;
-		uidev.id.version = 1;
+		uidev.id.vendor  = 0x3;
+		uidev.id.product = 0x3;
+		uidev.id.version = 2;
 		if(write(keyfd1, &uidev, sizeof(uidev)) < 0)
 			err("write failed");
 		if(ioctl(keyfd1, UI_DEV_CREATE) < 0)
