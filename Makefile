@@ -1,6 +1,6 @@
 #EXECS = retrogame gamera
 EXECS = retrogame
-CC    = gcc $(CFLAGS) -Wall -Ofast -fomit-frame-pointer -funroll-loops -s -L./ -lads1015
+CC    = gcc $(CFLAGS) -Wall -Ofast -fomit-frame-pointer -funroll-loops -s -L./ libads1015.a -lads1015
 
 all: $(EXECS)
 
