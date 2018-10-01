@@ -956,7 +956,7 @@ int main(int argc, char *argv[]) {
 	sigset_t           sigset;       // Signal mask
 
     ads1115Setup (MY_BASE, "/dev/i2c-1", 0x48);
-    voltage = analogRead (MY_BASE + 0);
+    int voltage = analogRead (MY_BASE + 0);
 
     if(debug) {
         printf("Voltage is '%s'\n", voltage);
