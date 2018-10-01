@@ -86,7 +86,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/input.h>
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
-#include <ads1015.h>
+#include <ads1115.h>
 #include "keyTable.h"
 #define MY_BASE 2222
 
@@ -955,7 +955,7 @@ int main(int argc, char *argv[]) {
 	struct input_event keyEv, synEv; // uinput events
 	sigset_t           sigset;       // Signal mask
 
-    ads1015Setup ("/dev/i2c-1", 0x48);
+    ads1115Setup ("/dev/i2c-1", 0x48);
     voltage = analogRead (0);
 
     if(debug) {
