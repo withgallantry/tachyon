@@ -86,7 +86,10 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/input.h>
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
+#include <ads1115.h>
 #include "keyTable.h"
+#define MY_BASE 2222
+
 
 // Global variables and such -----------------------------------------------
 
@@ -101,7 +104,7 @@ char
   *cfgName      = NULL,              // Name (no path) of config
   *cfgPathname,                      // Full path/name to config file
    board,                            // 0=Pi1Rev1, 1=Pi1Rev2, 2=Pi2/Pi3
-   debug        = 0,                 // 0=off, 1=cfg file, 2=live buttons
+   debug        = 1,                 // 0=off, 1=cfg file, 2=live buttons
    startupDebug = 0,                 // Initial debug level before cfg load
    readAddr     = 0x10;              // For MCP23017 reads (INTCAPA reg addr)
 int
@@ -670,11 +673,12 @@ static void pinConfigLoad() {
 		}
 		struct uinput_user_dev uidev;
 		memset(&uidev, 0, sizeof(uidev));
-		snprintf(uidev.name, UINPUT_MAX_NAME_SIZE, "retrogamepad");
+		snprintf(uidev.name, UINPUT_MAX_NAME_SIZE, "Virtual gamepad");
 		uidev.id.bustype = BUS_USB;
 		uidev.id.vendor  = 0x3;
 		uidev.id.product = 0x3;
 		uidev.id.version = 2;
+
 		if(write(keyfd1, &uidev, sizeof(uidev)) < 0)
 			err("write failed");
 		if(ioctl(keyfd1, UI_DEV_CREATE) < 0)
@@ -950,6 +954,14 @@ int main(int argc, char *argv[]) {
 	uint32_t           pressMask[5]; // For Vulcan pinch detect
 	struct input_event keyEv, synEv; // uinput events
 	sigset_t           sigset;       // Signal mask
+
+    ads1115Setup ("/dev/i2c-1", 0x48);
+    voltage = analogRead (0);
+
+    if(debug) {
+        printf("Voltage is '%s'\n", voltage);
+    }
+
 
 	// If in foreground, set max debug level (config may override)
 	if(getpgrp() == tcgetpgrp(STDOUT_FILENO)) startupDebug = debug = 99;
