@@ -86,7 +86,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/input.h>
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
-#include <Adafruit_ADS1015.h>
+#include "Adafruit_ADS1015.h"
 #include "keyTable.h"
 Adafruit_ADS1015 ads1015;  	// Construct an ads1015 at the default address: 0x48
 
