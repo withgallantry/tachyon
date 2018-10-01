@@ -955,8 +955,8 @@ int main(int argc, char *argv[]) {
 	struct input_event keyEv, synEv; // uinput events
 	sigset_t           sigset;       // Signal mask
 
-    ads1115Setup ("/dev/i2c-1", 0x48);
-    voltage = analogRead (0);
+    ads1115Setup (MY_BASE, "/dev/i2c-1", 0x48);
+    voltage = analogRead (MY_BASE + 0);
 
     if(debug) {
         printf("Voltage is '%s'\n", voltage);
