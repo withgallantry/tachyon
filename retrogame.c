@@ -86,9 +86,9 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/input.h>
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
-#include <ads1115.h>
+#include <Adafruit_ADS1015.h>
 #include "keyTable.h"
-#define MY_BASE 2222
+Adafruit_ADS1015 ads1015;  	// Construct an ads1015 at the default address: 0x48
 
 
 // Global variables and such -----------------------------------------------
@@ -955,8 +955,9 @@ int main(int argc, char *argv[]) {
 	struct input_event keyEv, synEv; // uinput events
 	sigset_t           sigset;       // Signal mask
 
-    ads1115Setup ("/dev/i2c-1", 0x48);
-    int voltage = analogRead (0);
+    ads1015.begin();
+
+    int16_t voltage = ads1015.readADC_SingleEnded(0);
 
     if(debug) {
         printf("Voltage is '%s'\n", voltage);
