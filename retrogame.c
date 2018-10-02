@@ -88,13 +88,8 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/i2c-dev.h>
 #include "keyTable.h"
 
-#include <linux/iio/iio.h>
-#include <linux/iio/types.h>
-#include <linux/iio/sysfs.h>
-#include <linux/iio/events.h>
-#include <linux/iio/buffer.h>
-#include <linux/iio/triggered_buffer.h>
-#include <linux/iio/trigger_consumer.h>
+#include "core/systick/systick.h"
+
 
 // Global variables and such -----------------------------------------------
 
