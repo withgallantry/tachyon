@@ -87,7 +87,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
 #include "keyTable.h"
-#include <linux/i2c/ads1015.h>
+#include <linux/platform_data/ads1015.h>
 
 // Global variables and such -----------------------------------------------
 
