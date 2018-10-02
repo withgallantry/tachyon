@@ -5,7 +5,7 @@ CC    = gcc $(CFLAGS) -Wall -Ofast -fomit-frame-pointer -funroll-loops -s
 all: $(EXECS)
 
 retrogame: retrogame.c keyTable.h
-	$(CC) $< libads1015.a -o $@
+	$(CC) libads1015.a $< -o $@
 	strip $@
 
 KEYFILE = /usr/include/linux/input.h
