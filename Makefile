@@ -1,11 +1,11 @@
 #EXECS = retrogame gamera
 EXECS = retrogame
-CC    = gcc $(CFLAGS) libads1015.a -Wall -Ofast -fomit-frame-pointer -funroll-loops -s
+CC    = gcc $(CFLAGS) -Wall -Ofast -fomit-frame-pointer -funroll-loops -s
 
 all: $(EXECS)
 
 retrogame: retrogame.c keyTable.h
-	$(CC) $< -o $@
+	$(CC) $< libads1015.a -o $@
 	strip $@
 
 KEYFILE = /usr/include/linux/input.h
