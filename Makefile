@@ -1,11 +1,11 @@
 #EXECS = retrogame gamera
 EXECS = retrogame
-CC    = gcc $(CFLAGS) -static -Wall -Ofast -fomit-frame-pointer -funroll-loops -s
+CC    = gcc $(CFLAGS) -static -fpermissive -Wall -Ofast -fomit-frame-pointer -funroll-loops -s
 LDFLAGS=-I./Adafruit_ADS1X15_Linux -L./Adafruit_ADS1X15_Linux -lads1015
 
 all: $(EXECS)
 
-retrogame: retrogame.c keyTable.h
+retrogame: retrogame.cpp keyTable.h
 	$(CC) $< $(LDFLAGS) -o $@
 	strip $@
 
