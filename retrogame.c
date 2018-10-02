@@ -87,7 +87,14 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
 #include "keyTable.h"
-#include <linux/hwmon.h>
+
+#include <linux/iio/iio.h>
+#include <linux/iio/types.h>
+#include <linux/iio/sysfs.h>
+#include <linux/iio/events.h>
+#include <linux/iio/buffer.h>
+#include <linux/iio/triggered_buffer.h>
+#include <linux/iio/trigger_consumer.h>
 
 // Global variables and such -----------------------------------------------
 
