@@ -87,8 +87,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <linux/uinput.h>
 #include <linux/i2c-dev.h>
 #include "keyTable.h"
-
-#include "core/systick/systick.h"
+#include "ads1015.h"
 
 
 // Global variables and such -----------------------------------------------
@@ -113,6 +112,7 @@ int
    keyfd1       = -1,                // /dev/uinput file descriptor
    keyfd2       = -1,                // /dev/input/eventX file descriptor
    keyfd        = -1,                // = (keyfd2 >= 0) ? keyfd2 : keyfd1;
+   ads,                              // ADS1015
    i2cfd[8],                         // /dev/i2c-1 MCP23017 file descriptors
    vulcanTime   = 1500,              // Pinch time in milliseconds
    debounceTime = 20,                // 20 ms for button debouncing
@@ -239,6 +239,25 @@ static void pull(int bitmask, int state) {
 	for(shortWait=150;--shortWait;); // Wait again
 	gpio[GPPUD]     = 0;             // Reset pullup registers
 	gpio[GPPUDCLK0] = 0;
+}
+
+static void initADS() {
+//   uint16_t config = ADS1015_REG_CONFIG_CQUE_NONE    | // Disable the comparator (default val)
+//                     ADS1015_REG_CONFIG_CLAT_NONLAT  | // Non-latching (default val)
+//                     ADS1015_REG_CONFIG_CPOL_ACTVLOW | // Alert/Rdy active low   (default val)
+//                     ADS1015_REG_CONFIG_CMODE_TRAD   | // Traditional comparator (default val)
+//                     ADS1015_REG_CONFIG_DR_1600SPS   | // 1600 samples per second (default)
+//                     ADS1015_REG_CONFIG_MODE_SINGLE;   // Single-shot mode (default)
+//
+//   // Set PGA/voltage range
+//   config |= ADS1015_REG_CONFIG_PGA_6_144V;            // +/- 6.144V range (limited to VDD +0.3V max!)
+//
+// if((ads = open("/dev/i2c-1", O_RDWR | O_NONBLOCK)) > 0)
+//   {
+//       ioctl(ads, I2C_SLAVE, 0x48);
+//       write_register(ads, config)
+////       write(ads, config, sizeof(config));
+//   }
 }
 
 // Restore GPIO and uinput to startup state; un-export any Sysfs pins used,
