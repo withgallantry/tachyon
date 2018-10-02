@@ -1,7 +1,7 @@
 #EXECS = retrogame gamera
 EXECS = retrogame
 CC    = gcc $(CFLAGS) -static -Wall -Ofast -fomit-frame-pointer -funroll-loops -s
-LDFLAGS=-I. -L./Adafruit_ADS1X15_Linux -lads1015
+LDFLAGS=-I./Adafruit_ADS1X15_Linux -L./Adafruit_ADS1X15_Linux -lads1015
 
 all: $(EXECS)
 
