@@ -20,7 +20,7 @@
     v2.1 - pcDuino version with adjustable SPS - R. Reignier
 */
 /**************************************************************************/
-#include "Adafruit_ADS1015.h"
+#include "ads1015.h"
 
 int i2cHandle;
 
