@@ -955,8 +955,6 @@ int main(int argc, char *argv[]) {
 	struct input_event keyEv, synEv; // uinput events
 	sigset_t           sigset;       // Signal mask
 
-    ads1015.begin();
-
     int16_t voltage = ads1015.readADC_SingleEnded(0);
 
     if(debug) {
