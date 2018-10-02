@@ -6,7 +6,7 @@ LDFLAGS=-I. -L. -lads1015
 all: $(EXECS)
 
 retrogame: retrogame.c keyTable.h
-	$(CC) $< -o $@ $^ $(LDFLAGS)
+	$(CC) $< $(LDFLAGS) -o $@
 	strip $@
 
 KEYFILE = /usr/include/linux/input.h
